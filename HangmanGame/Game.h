@@ -27,4 +27,13 @@ private:
 	int m_guessed = 0;
 	int m_missed = 0;
 	GameState m_gameState = GameState::START;
+	std::string m_hangmanPictures[7] = {
+		"  +---+\n  |   | \n      | \n      | \n      | \n      | \n=========",
+		"  +---+\n  |   | \n  O   | \n      | \n      | \n      | \n=========",
+		"  +---+\n  |   | \n  O   | \n  |   | \n      | \n      | \n=========",
+		"  +---+\n  |   | \n  O   | \n /|   | \n      | \n      | \n=========",
+		"  +---+\n  |   | \n  O   | \n /|\\  | \n      | \n      | \n=========",
+		"  +---+\n  |   | \n  O   | \n /|\\  | \n /    | \n      | \n=========",
+		"  +---+\n  |   | \n  O   | \n /|\\  | \n / \\  | \n      | \n========="
+	};
 };

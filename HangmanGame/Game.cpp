@@ -51,7 +51,7 @@ bool Game::OnUpdate(float deltaTime)
 		m_missed++;
 	}
 
-	if ((m_guessed == m_word.size()) || (m_missed >= 7))
+	if ((m_guessed == m_word.size()) || (m_missed == 6))
 	{
 		return true;
 	}
@@ -77,6 +77,8 @@ std::string Game::OnRender()
 	}
 
 	_output.operator+=("\n\n");
+	_output.operator+=(m_hangmanPictures[m_missed]);
+	_output.operator+=("\n\n");
 
 	_output.operator+=("Uzyte dotychczas litery:\n");
 
@@ -92,7 +94,7 @@ std::string Game::OnRender()
 		return _output;
 	}
 
-	if (m_missed >= 7)
+	if (m_missed >= 6)
 	{
 		_output.operator+=("\n\n\n\nPRZEGRALES :(\n\n");
 		return _output;
