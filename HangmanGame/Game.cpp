@@ -86,7 +86,19 @@ std::string Game::OnRender()
 		_output.operator+=(" ");
 	}
 
-	_output.operator+=("\n\n");
+	if (m_guessed == m_word.size())
+	{
+		_output.operator+=("\n\n\n\nGRATULACJE !!! WYGRALES !!!\n\n");
+		return _output;
+	}
+
+	if (m_missed >= 7)
+	{
+		_output.operator+=("\n\n\n\nPRZEGRALES :(\n\n");
+		return _output;
+	}
+
+	_output.operator+=("\n\n\n\n");
 
 	return _output;
 }
