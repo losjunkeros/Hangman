@@ -4,22 +4,36 @@
 
 void Game::OnInit()
 {
+	m_gameState = GameState::START;
+
 	m_guessedLetters.clear();
+	m_enteredLetters.clear();
 	srand(std::time(NULL));
 	int randomIndex = rand() % m_wordsPool.size();
 	m_word = m_wordsPool[randomIndex];
 
-	m_gameState = GameState::START;
+	for (int i = 0; i < m_word.size(); ++i)
+	{
+		m_guessedLetters.push_back(false);
+	}
 }
 
 void Game::OnInput(char letter)
 {
-
+	m_enteredLetters.push_back(letter);
 }
 
 bool Game::OnUpdate(float deltaTime)
 {
+	m_gameState = GameState::UPDATE;
 
+	for (int i = 0; i < m_word.size(); ++i)
+	{
+		if (m_word[i] == m_enteredLetters[m_enteredLetters.size()-1])
+		{
+			m_guessedLetters[i] = true;
+		}
+	}
 
 
 
@@ -35,7 +49,8 @@ std::string Game::OnRender()
 
 void Game::OnShutdown()
 {
-	m_guessedLetters.clear();
-
 	m_gameState = GameState::FINISH;
+
+	m_guessedLetters.clear();
+	m_enteredLetters.clear();
 }
