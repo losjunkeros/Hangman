@@ -8,6 +8,8 @@ void Game::OnInit()
 
 	m_guessedLetters.clear();
 	m_enteredLetters.clear();
+	m_counter = 0;
+
 	srand(std::time(NULL));
 	int randomIndex = rand() % m_wordsPool.size();
 	m_word = m_wordsPool[randomIndex];
@@ -29,13 +31,17 @@ bool Game::OnUpdate(float deltaTime)
 
 	for (int i = 0; i < m_word.size(); ++i)
 	{
-		if (m_word[i] == m_enteredLetters[m_enteredLetters.size()-1])
+		if (m_word[i] == m_enteredLetters[m_enteredLetters.size() - 1])
 		{
 			m_guessedLetters[i] = true;
+			m_counter++;
 		}
 	}
 
-
+	if (m_counter == m_word.size())
+	{
+		return true;
+	}
 
 	return false;
 }
