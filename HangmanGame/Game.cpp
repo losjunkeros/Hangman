@@ -49,15 +49,41 @@ bool Game::OnUpdate(float deltaTime)
 
 std::string Game::OnRender()
 {
-	std::string output;
+	std::string _output = "";
 
-	return output;
+	for (int i = 0; i < m_guessedLetters.size(); ++i)
+	{
+		if (m_guessedLetters[i] == true)
+		{
+			_output.operator+=(m_word[i]);
+			_output.operator+=(" ");
+		}
+		else
+		{
+			_output.operator+=("_ ");
+		}
+	}
+
+	_output.operator+=("\n\n");
+
+	_output.operator+=("Uzyte dotychczas litery:\n");
+
+	for (int i = 0; i < m_enteredLetters.size(); ++i)
+	{
+		_output.operator+=(m_enteredLetters[i]);
+		_output.operator+=(" ");
+	}
+
+	_output.operator+=("\n\n");
+
+	return _output;
 }
 
 void Game::OnShutdown()
 {
 	m_gameState = GameState::FINISH;
 
+	m_wordsPool.clear();
 	m_guessedLetters.clear();
 	m_enteredLetters.clear();
 }
