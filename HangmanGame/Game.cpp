@@ -16,13 +16,14 @@ void Game::OnInit()
 
 	for (int i = 0; i < m_word.size(); ++i)
 	{
+		m_word[i] = toupper(m_word[i]);
 		m_guessedLetters.push_back(false);
 	}
 }
 
 void Game::OnInput(char letter)
 {
-	m_enteredLetters.push_back(letter);
+	m_enteredLetters.push_back(toupper(letter));
 }
 
 bool Game::OnUpdate(float deltaTime)
