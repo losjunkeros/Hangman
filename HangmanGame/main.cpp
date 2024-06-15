@@ -16,10 +16,9 @@ Game g_game;
 
 int main()
 {
-
 	Initialize();
 
-	while (g_exitGame)
+	while (!g_exitGame)
 	{
 		GetInput();
 		Update(0.0f);
@@ -38,7 +37,7 @@ void Initialize()
 
 void GetInput()
 {
-	// g_game
+	g_game.OnInput();
 }
 
 void Update(float deltaTime)
@@ -48,7 +47,7 @@ void Update(float deltaTime)
 
 void Render()
 {
-	g_game.OnRender();
+	cout << g_game.OnRender() << endl << endl;
 }
 
 void Shutdown()
