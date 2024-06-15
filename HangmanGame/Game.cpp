@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
 
 void Game::OnInit()
 {
@@ -10,6 +11,19 @@ void Game::OnInit()
 	m_enteredLetters.clear();
 	m_guessed = 0;
 	m_missed = 0;
+
+	std::ifstream _file;
+	std::string _line;
+	_file.open("wordspool.txt");
+	if (_file.is_open())
+	{
+		m_wordsPool.clear();
+		while (std::getline(_file, _line))
+		{
+			m_wordsPool.push_back(_line);
+		}
+		_file.close();
+	}
 
 	srand(std::time(NULL));
 	int randomIndex = rand() % m_wordsPool.size();
