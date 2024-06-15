@@ -12,7 +12,7 @@ void Game::OnInit()
 	m_gameState = GameState::START;
 }
 
-void Game::OnInput()
+void Game::OnInput(char letter)
 {
 
 }

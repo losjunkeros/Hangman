@@ -14,7 +14,7 @@ class Game
 
 public:
 	void OnInit();
-	void OnInput();
+	void OnInput(char letter);
 	bool OnUpdate(float deltaTime);
 	std::string OnRender();
 	void OnShutdown();

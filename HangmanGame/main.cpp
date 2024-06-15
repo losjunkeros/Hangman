@@ -37,7 +37,21 @@ void Initialize()
 
 void GetInput()
 {
-	g_game.OnInput();
+	char _letter;
+
+	cout << "Podaj jakas litere: ";
+	cin >> _letter;
+	cout << endl;
+
+	if (isalpha(_letter))
+	{
+		g_game.OnInput(_letter);
+	}
+	else
+	{
+		cout << "Musisz podac litere!" << endl << endl;
+		GetInput();
+	}
 }
 
 void Update(float deltaTime)
@@ -47,7 +61,7 @@ void Update(float deltaTime)
 
 void Render()
 {
-	cout << g_game.OnRender() << endl << endl;
+	cout << g_game.OnRender();
 }
 
 void Shutdown()
